@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+<div id="progress_wizard" class="progress_wizard">
+    <div class="v-line"></div>
+    <div id="step1" class="step_active">
+        <span>Step 1: Load file</span>
+    </div>
+    <div id="step2" class="step">
+        <span>Step 2: Remove rows/columns </span>
+    </div>
+    <div id="step3" class="step">
+        <span>Step 3: See result game </span>
+    </div>
+</div>
+<div class="buttons">
+    <input type="button" name="next" id="next" class="next-action-button" value="Next"/>
+    <input type="button" name="previous" id="prev" class="prev-action-button" value="Previous"/>
+</div>
+
+<form id="msform">
+    <fieldset id="fs1">
+        <div>
+            <h2 class="fs-title">Step 1 : Load file</h2>
+            <input type="file" id="filename"><br>
+        </div>
+        <div class="content_container" id="image_container">
+            <img id="gameImage" onerror="javascript: onGameImageLoadFailure()"/>
+        </div>
+
+    </fieldset>
+    <fieldset id="fs2">
+        <h2 class="fs-title">Step 2: Remove rows/columns</h2>
+        <div class="content_container">
+            <table id="cellsTable">
+            </table>
+        </div>
+    </fieldset>
+    <fieldset id="fs3">
+        <h2 class="fs-title">Step 3: See result game </h2>
+         <div class="content_container">
+            <table id="finalMovesTable">
+            </table>
+        </div>
+   </fieldset>
+</form>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
