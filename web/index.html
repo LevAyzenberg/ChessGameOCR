@@ -18,6 +18,9 @@
     <div id="step3" class="step">
         <span>Step 3: See result game </span>
     </div>
+    <div id="step4" class="step">
+        <span>Step 4: Game tree </span>
+    </div>
 </div>
 <div class="buttons">
     <input type="button" name="next" id="next" class="next-action-button" value="Next"/>
@@ -38,17 +41,26 @@
     <fieldset id="fs2">
         <h2 class="fs-title">Step 2: Remove rows/columns</h2>
         <div class="content_container">
+            <div id="build_cells_progress_block" class="progress_block">
+                <h4> Extracting moves ...</h4>
+                <progress id="build_cells_progress" value="0" max="100"></progress>
+            </div>
             <table id="cellsTable">
             </table>
         </div>
     </fieldset>
     <fieldset id="fs3">
         <h2 class="fs-title">Step 3: See result game </h2>
-         <div class="content_container">
+        <div class="content_container">
             <table id="finalMovesTable">
             </table>
         </div>
-   </fieldset>
+    </fieldset>
+    <fieldset id="fs4">
+        <h2 class="fs-title">Step 4:  Game tree </h2>
+        <div class="content_container" id="game_tree_container">
+        </div>
+    </fieldset>
 </form>
 
 

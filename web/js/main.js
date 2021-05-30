@@ -31,17 +31,29 @@ function next_prev(is_next)
     // run python staff
     switch(active)
     {
+    case 1:
+        eel.wizard_step1();
+        break;
+
     case 2:
+        document.getElementById("build_cells_progress_block").style.display="block"
+        document.getElementById("build_cells_progress").value=0
         document.getElementById("cellsTable").innerHTML=""
         var img=document.getElementById("gameImage").src
         if((img == "") || (document.getElementById("gameImage").style.display=="none"))
             return
         eel.wizard_step2(img);
         break;
+
     case 3:
         document.getElementById("finalMovesTable").innerHTML=""
         eel.wizard_step3();
         break;
+    case 4:
+        document.getElementById("game_tree_container").innerHTML=""
+        eel.wizard_step4();
+        break;
+
 
     default:
         break;
@@ -114,6 +126,7 @@ function buildCellsTable(rows, columns)
 {
     try
     {
+        document.getElementById("build_cells_progress_block").style.display="none"
         var table_elem=document.getElementById("cellsTable");
         // Clear table
         table_elem.innerHTML=""
@@ -238,4 +251,25 @@ function putCellImage(i,j,table_name,img)
       console.error(error);
     }
 
+}
+
+eel.expose(updateBuildCellsProgress)
+function updateBuildCellsProgress(progressValue)
+{
+    document.getElementById("build_cells_progress").value=progressValue
+}
+
+eel.expose(showDebugGameTree)
+function showDebugGameTree(html_str)
+{
+    document.getElementById("game_tree_container").innerHTML=html_str
+    var toggler = document.getElementById("game_tree_container").getElementsByClassName("caret");
+    var i;
+
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener("click", function() {
+        this.parentElement.querySelector(".nested").classList.toggle("active");
+        this.classList.toggle("caret-down");
+      });
+    }
 }
